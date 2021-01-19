@@ -126,7 +126,7 @@ export default function GalleryPost() {
     if (appOptions.sortedPhotos.length > 0) {
       let index = appOptions.sortedPhotos.findIndex( photo => photo.id === id);
       let photo = appOptions.sortedPhotos[index];
-     
+
       parseVisionAPI(photo);
       calculateImageSize(photo);
       setCurrentPhoto(photo);
@@ -162,16 +162,7 @@ export default function GalleryPost() {
     if (visionAPI.hasOwnProperty('localizedObjectAnnotations')) {
       objects = [...objects, ...visionAPI['localizedObjectAnnotations']]
     }
-    // if (visionAPI.hasOwnProperty('landmarkAnnotations')) {
-    //   objects = [...objects, ...visionAPI['landmarkAnnotations']]
-    // }
-    // if (visionAPI.hasOwnProperty('logoAnnotations')) {
-    //   objects = [...objects, ...visionAPI['logoAnnotations']]
-    // }
-    console.log('visionAPI', visionAPI);
-    console.log('labels', labels);
-    console.log('objects', objects);
-    console.log('update', uniqueLabels)
+
     setLabels(uniqueLabels);
     setObjects(objects)
   }

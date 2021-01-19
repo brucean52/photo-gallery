@@ -24,8 +24,11 @@ const server = new ApolloServer({
   resolvers
 });
 
+var corsOptions = {
+  credentials: true // <-- REQUIRED backend setting
+};
 
-app.use(cors());
+app.use(cors(corsOptions));
 server.applyMiddleware({app});
 
 app.listen({port}, () =>

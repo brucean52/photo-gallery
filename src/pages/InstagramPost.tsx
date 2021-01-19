@@ -1,5 +1,4 @@
 import React, {useRef, useEffect, useContext, useState} from "react";
-import { gql, useLazyQuery } from '@apollo/client';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import {useHistory, useParams} from "react-router-dom";
@@ -13,28 +12,7 @@ import CloseIcon from '../components/icons/CloseIcon';
 import {AppContext} from '../AppContext';
 import {Post} from '../types';
 import {defaultPost} from '../defaults';
-
-const ALL_POSTS_QUERY = gql`
-  query {
-    getPosts{
-      description
-      id
-      likes
-      location
-      tags
-      postedDate
-      photos {
-        id
-        src
-        squareSrc
-        vision
-        alt
-        exifImageWidth
-        exifImageHeight
-      }
-    }
-  }
-`
+import {Posts} from '../assets/mocks/index';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -104,11 +82,9 @@ export default function InstagramModalPost() {
 
   const modalRef = useRef<HTMLDivElement>(null);
   const { appOptions, setDefaultPosts } = useContext(AppContext);
-  const [getPosts, { loading, data }] = useLazyQuery(ALL_POSTS_QUERY);
 
   const [currentPost, setCurrentPost] = useState<Post>(defaultPost);
   const [postIndex, setPostIndex] = useState(0);
-  const medium = useMediaQuery('(min-width:1400px)');
 
 
   useEffect(() => {
@@ -117,22 +93,9 @@ export default function InstagramModalPost() {
       setPostIndex(appOptions.defaultPosts.findIndex(post => post.id === id));
       disableBodyScroll(modalRef.current);
     } else {
-      getPosts();
+      setDefaultPosts(Posts);
     }
-    console.log('medium', medium)
   }, []);
-
-  useEffect(() => {
-    if (data) {
-      let index = data['getPosts'].findIndex(post => post.id === id);
-      let post = data['getPosts'][index];
-
-      setCurrentPost(post);
-      setPostIndex(index);
-      disableBodyScroll(modalRef.current);
-      setDefaultPosts(data['getPosts']);
-    }
-  }, [data]);
 
   useEffect(() => {
     if (mobile) {

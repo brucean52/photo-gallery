@@ -910,6 +910,7 @@ const visionApi = {
 
 
 const photo = {
+  id: 'bb12',
   src: '/images/placeholder.png',
   squareSrc: '/images/placeholder.png',
   alt: 'placeholder',
@@ -921,7 +922,7 @@ const photo = {
   exposureTime: '1/373',
   apertureValue: 1.8,
   iso: 33,
-  dateTimeOriginal: '2019:04:12 17:30:50',
+  dateTimeOriginal: '2020-01-25T08:00:00.000+00:00',
   brightnessValue: 6.84,
   subjectDistance: '6.06 m',
   flash: 'Off, Did not fire',
@@ -935,7 +936,7 @@ const photo = {
   gpsAltitude: '16.7 m Below Sea Level',
   gpsLatitude: "37 deg 34' 26.50\" N",
   gpsLongitude: "122 deg 3' 37.35\" W",
-  gpsDateTime: '2019:04:13 00:29:49Z',
+  gpsDateTime: '2020-01-25T08:00:00.000+00:00',
   circleOfConfusion: '0.005 mm',
   hyperfocalDistance: '2.22 m',
   lightValue: 11.8,
@@ -945,7 +946,7 @@ export const postMock = {
   id: 'aa20',
   photos: [photo],
   description: '',
-  postedDate: '2020:04:12 17:30:50',
+  postedDate: '2020-01-25T08:00:00.000+00:00',
   likes: 50,
   views: 0,
   location: '',

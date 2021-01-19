@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { gql, useLazyQuery } from '@apollo/client';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 
 import TabPanel from '../components/common/TabPanel';
@@ -13,28 +12,7 @@ import FeedView from '../components/instagram/views/FeedView';
 import GridIcon from '../components/icons/GridIcon';
 
 import {AppContext} from '../AppContext';
-
-const ALL_POSTS_QUERY = gql`
-  query {
-    getPosts{
-      description
-      id
-      likes
-      location
-      tags
-      postedDate
-      photos {
-        id
-        src
-        squareSrc
-        vision
-        alt
-        exifImageWidth
-        exifImageHeight
-      }
-    }
-  }
-`
+import {Posts} from '../assets/mocks/index';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -91,19 +69,11 @@ export default function InstagramPage() {
   const { appOptions, setDefaultPosts } = useContext(AppContext);
   const [value, setValue] = useState(0);
 
-  const [getPosts, { loading, data }] = useLazyQuery(ALL_POSTS_QUERY);
-
   useEffect(() => {
     if (appOptions.defaultPosts.length === 0) {
-      getPosts();
+      setDefaultPosts(Posts);
     }
   }, []);
-
-  useEffect(() => {
-    if (data) {
-      setDefaultPosts(data['getPosts']);
-    }
-  }, [data]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

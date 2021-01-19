@@ -5,10 +5,9 @@
 /.pnp
 .pnp.js
 
-api/node_modules
-api/config/dev.js
-# src/assets/mocks/photos
-# public/photos
+/api
+src/assets/mocks/photos
+public/photos
 
 # testing
 /coverage

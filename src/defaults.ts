@@ -1,9 +1,9 @@
 const defaultUserProfile = {
-  username: 'no_filter.us',
+  username: 'brucean52',
   name: 'Bruce',
   followers: 123123,
   following: 1234,
-  bio: 'Creator'
+  bio: 'Engineer'
 }
 
 export const defaultAppOptions = {

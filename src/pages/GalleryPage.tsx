@@ -3,33 +3,11 @@ import {Link, useLocation} from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import Gallery from 'react-photo-gallery';
 import LazyLoad from 'react-lazyload';
-import { gql, useLazyQuery } from '@apollo/client';
 
 import {AppContext} from '../AppContext';
 import {shufflePosts} from '../util/posts';
 import {Post} from '../types';
-
-const ALL_POSTS_QUERY = gql`
-  query {
-    getPosts{
-      description
-      id
-      likes
-      location
-      tags
-      postedDate
-      photos {
-        id
-        src
-        squareSrc
-        vision
-        alt
-        exifImageWidth
-        exifImageHeight
-      }
-    }
-  }
-`
+import {Posts} from '../assets/mocks/index';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,23 +36,11 @@ export default function GalleryPage() {
   const classes = useStyles();
   const location = useLocation();
   const { appOptions, setDefaultPosts, setSortedPhotos } = useContext(AppContext);
-  const [getPosts, { loading, data }] = useLazyQuery(ALL_POSTS_QUERY);
   const [photos, setPhotos] = useState([])
 
   useEffect(() => {
-    if (appOptions.defaultPosts.length === 0) {
-      getPosts();
-    } else {
-      parsePhotos(appOptions.defaultPosts);
-    }
+    parsePhotos(Posts); 
   }, []);
-
-  useEffect(() => {
-    if (data) {
-      setDefaultPosts(data['getPosts']);
-      parsePhotos(data['getPosts']);
-    }
-  }, [data]);
 
   const parsePhotos = (posts: Post[]) => {
     let newPosts = shufflePosts(posts);
@@ -91,10 +57,10 @@ export default function GalleryPage() {
           vision: photo.vision,
           tags: post.tags
         }
+        
         parsedPhotos.push(newPhoto);
       });
     });
-
     setPhotos(parsedPhotos);
     setSortedPhotos(parsedPhotos);
   }
