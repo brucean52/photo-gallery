@@ -24,9 +24,9 @@ Open [http://localhost:3000/](http://localhost:3000/) to view it in your browser
 
 ### TBD `npm test`
 Runs the applications tests. Test code was wrtten using React Testing Library.
-
+s
 ## References
 
-- [react-photo-album](https://github.com/igordanchenko/react-photo-album)
+- [react-photo-gallery](https://github.com/neptunian/react-photo-gallery)
 - [Google Cloud Vision API](https://cloud.google.com/vision)
 - [Instagram](https://www.instagram.com/)
