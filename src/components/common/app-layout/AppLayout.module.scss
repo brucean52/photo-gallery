@@ -1,0 +1,9 @@
+.container {
+  background-color: #FFFFFF;
+  padding-top: 48px;
+  @media (max-device-width: 899px) {
+    & {
+      padding: 0;
+    }
+  }
+}

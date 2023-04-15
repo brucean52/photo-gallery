@@ -1,0 +1,116 @@
+.container {
+  display: flex;
+}
+
+.card {
+  width: 400px;
+  margin: 0;
+  border-radius: 0 4px 4px 0;
+
+  @media (max-device-width: 1350px) {
+    & {  
+      width: 350px;
+    }
+  }
+
+  @media (max-device-width: 1199px) {
+    & {  
+      width: 300px;
+    }
+  }
+
+  @media (max-device-width: 999px) {
+    & {  
+      width: 250px;
+    }
+  }
+}
+
+.card-header {
+  padding: 14px;
+}
+
+.settings-icon {
+  margin-top: 6px;
+  margin-right: 12px;
+}
+
+.post-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.sub-header {
+  font-size: 12px;
+  color: #262626;
+  font-weight: 400;
+}
+
+.username {
+  color: #262626;
+  font-weight: 500;
+  &:hover {
+    opacity: 0.5;
+    cursor: default;
+ }
+}
+
+.content {
+  padding: 16px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 95%;
+}
+
+.post-text-contain {
+  display: flex;
+  padding-left: 14px;
+}
+
+.post-text {
+  display: inline-block;
+  word-break: break-word;
+  font-size: 14px;
+  padding: 0 16px;
+}
+
+.time {
+  color: #737373;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+  padding: 8px 16px;
+}
+
+.divider, .divider-icon {
+  border-color: #EFEFEF;
+}
+
+.divider-icon {
+  margin-bottom: 12px;
+}
+
+.icon-bar-contain {
+  padding: 0 16px;
+}
+
+.tag {
+  color: #00376B;
+}
+
+.likes-text {
+  font-weight: 550;
+  color: #000000;
+  font-size: 14px;
+  margin: 4px 0 4px 16px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+}
+
+.image {
+  user-select: none;
+}

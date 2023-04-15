@@ -1,8 +1,5 @@
 export type AppContextType = {
   appOptions: AppOptionsType;
-  setDefaultPosts: (posts: Post[]) => void;
-  setSelectedPost: (postId: string) => void;
-  clearSelectedPost: () => void;
   setSortedPhotos: (photos) => void;
 }
 
@@ -17,7 +14,6 @@ export type Post = {
   id: string,
   photos: Photo[],
   likes: number,
-  views: number,
   description: string,
   location: string,
   postedDate: string,
@@ -30,31 +26,8 @@ export type Photo = {
   squareSrc: string,
   alt: string,
   vision: string,
-  make: string,
-  model: string,
-  xyResolution: number,
-  orientation: string,
-  exposureTime: string,
-  apertureValue: number,
-  iso: number,
-  dateTimeOriginal: string,
-  brightnessValue: number,
-  subjectDistance: string,
-  flash: string,
-  focalLength: string,
-  fov: string,
-  exifImageWidth: number,
-  exifImageHeight: number,
-  digitalZoomRatio: number,
-  focalLengthIn35mmFormat: string,
-  subjectDistanceRange: string,
-  gpsAltitude: string,
-  gpsLatitude: string,
-  gpsLongitude: string,
-  gpsDateTime: string,
-  circleOfConfusion: string,
-  hyperfocalDistance: string,
-  lightValue: number,
+  width: number,
+  height: number
 }
 
 export type UserProfile = {
@@ -62,5 +35,6 @@ export type UserProfile = {
   name: string,
   followers: number,
   following: number,
-  bio: string
+  bio: string,
+  imgSrc: any
 }

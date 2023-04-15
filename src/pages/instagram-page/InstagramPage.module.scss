@@ -1,0 +1,78 @@
+.container {
+  background-color: #FFFFFF;
+  max-width: 935px;
+  margin: 38px auto;
+}
+
+.tabs-wrapper {
+  border-top: 1px solid #DBDBDB;
+  flex-direction: row;
+  & :global(.MuiTabs-indicator) {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    transition: none;
+  }
+  & :global(.MuiTabs-indicatorSpan) {
+    max-width: 58px;
+    width: 100%;
+    background-color: #262626;
+  }
+  @media (max-device-width: 899px) {
+    & {
+      border-bottom: 1px solid #DBDBDB;
+      border-top: none;
+    }
+    & :global(.MuiTab-root) {
+      width: 50%;
+    }
+    
+    & :global(.MuiTabs-indicatorSpan) {
+      max-width: 100%;
+    }
+  }
+}
+
+.indicator {
+  top: 0;
+  height: 1px;
+  @media (max-device-width: 899px) {
+    & {
+      top: auto;
+    }
+  }
+}
+
+.tab-container {
+  display: flex;
+  margin-top: 5px;
+  font-family: "-apple-system", "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif";
+}
+
+.tab-font, .tab-font-feed {
+  margin-top: 1px;
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-left: 6px;
+}
+
+.tab-font-feed {
+  margin-top: 3px;
+}
+
+.feed-icon {
+  margin-top: 2px;
+  font-size: 16px;
+
+  @media (max-device-width: 899px) {
+    & {
+      font-size: 24px;
+    }
+  }
+}
+
+.nav {
+  box-shadow: 0 0 0;
+  background-color: #FFFFFF;
+}

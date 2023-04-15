@@ -1,36 +1,31 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {BrowserRouter as Router} from 'react-router-dom';
-import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { ApolloProvider } from '@apollo/client';
-import { ThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-
+import ReactDOM from 'react-dom/client';
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import AppProvider from './AppContext';
-import {theme} from './theme';
+import theme from './theme';
 import reportWebVitals from './reportWebVitals';
-import './index.css';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import './index.scss';
 
-const client = new ApolloClient({
-  uri: '/graphql',
-  cache: new InMemoryCache()
-});
-
-ReactDOM.render(
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+root.render(
   <React.StrictMode>
-    <Router>
-      <ApolloProvider client={client}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline/>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <BrowserRouter>
           <AppProvider>
             <App />
           </AppProvider>
-        </ThemeProvider>
-      </ApolloProvider>
-    </Router>
+        </BrowserRouter>
+      </ThemeProvider>
+    </StyledEngineProvider>
   </React.StrictMode>,
-  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

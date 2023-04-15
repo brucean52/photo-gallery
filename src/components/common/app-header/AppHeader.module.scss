@@ -1,0 +1,82 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-device-width: 1300px) {
+    & {
+      padding: 0 40px;
+    }
+  }
+
+  @media (max-device-width: 599px) {
+    & {
+      padding: 0 20px;
+    }
+  }
+}
+
+.flex {
+  display: flex;
+  cursor: pointer;
+
+  @media (max-device-width: 899px) {
+    & {
+      display: none;
+    }
+  }
+}
+
+.title {
+  font-family: 'Bebas Neue', cursive;
+  padding: 11px 0 0 10px;
+  font-size: 24px;
+  user-select: none;
+  letter-spacing: 0.5px;
+}
+
+.logo-container {
+  display: flex;
+  cursor: pointer;
+}
+
+.logo-icon {
+  font-size: 24px;
+  margin-top: 12px;
+}
+
+.github-padding {
+  padding: 8px 0 0 0;
+}
+
+.github-color {
+  color: #FFFFFF;
+}
+
+.nav-tab {
+  color: #FFF;
+  &:global(.Mui-selected) {
+    color: #1a8cff;
+    font-weight: bold;
+  }
+  &:global(.Mui-focusVisible) {
+    background-color: #d1eaff;
+  }
+  &:hover {
+    color: #40a9ff;
+    opacity: 1;
+  }
+}
+
+.nav-tabs {
+  & :global(.MuiTabs-indicator) {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    transition: none;
+  }
+  & :global(.MuiTabs-indicatorSpan) {
+    max-width: 88px;
+    width: 100%;
+    background-color: #1a8cff;
+  }
+}

@@ -1,15 +1,55 @@
-export default function GridIcon() {
+type Props = {
+  size: number
+}
+
+export default function GridIcon(props: Props) {
   return (
     <svg
-      width="12"
-      height="12"
-      fill="#262626"
-      viewBox="0 0 48 48"
+      width={props.size}
+      height={props.size}
+      fill="currentColor"
+      color="currentColor"
+      viewBox="0 0 24 24"
     >
       <path
-        fillRule="evenodd"
-        d="M45 1.5H3c-.8 0-1.5.7-1.5 1.5v42c0 .8.7 1.5 1.5 1.5h42c.8 0 1.5-.7 1.5-1.5V3c0-.8-.7-1.5-1.5-1.5zm-40.5 3h11v11h-11v-11zm0 14h11v11h-11v-11zm11 25h-11v-11h11v11zm14 0h-11v-11h11v11zm0-14h-11v-11h11v11zm0-14h-11v-11h11v11zm14 28h-11v-11h11v11zm0-14h-11v-11h11v11zm0-14h-11v-11h11v11z"
-        clipRule="evenodd"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M3 3H21V21H3z"
+      ></path>
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M9.015 3L9.015 21"
+      ></path>
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M14.985 3L14.985 21"
+      ></path>
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M21 9.015L3 9.015"
+      ></path>
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M21 14.985L3 14.985"
       ></path>
     </svg>
   );

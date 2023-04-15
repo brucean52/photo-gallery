@@ -1,0 +1,239 @@
+.avatar {
+  margin: 0 auto;
+  width: 150px;
+  height: 150px;
+
+  @media (max-device-width: 599px) {
+    & {
+      width: 125px;
+      height: 125px;
+    }
+  }
+
+  @media (max-device-width: 476px) {
+    & {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  @media (max-device-width: 399px) {
+    & {
+      width: 75px;
+      height: 75px;
+    }
+  }
+}
+
+.container {
+  display: flex;
+  margin: 16px 16px 44px 16px;
+  justify-content: center;
+  gap: 5%;
+
+  @media (max-device-width: 899px) {
+    & {
+      margin-bottom: 16px;
+      justify-content: flex-start;
+      gap: 6%;
+    }
+  }
+}
+
+.meta-container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  padding: 0;
+  letter-spacing: 0;
+  & > li {
+    list-style: none;
+    margin-right: 40px;
+    font-size: 16px;
+  }
+
+  @media (max-device-width: 899px) {
+    & {
+      margin-top: 53px;
+      justify-content: space-between;
+      width: 300px;
+    }
+    & > li{
+      margin-right: 0
+    }
+  }
+  @media (max-device-width: 599px) {
+    & {
+      margin-top: 38px;
+      width: 275px;
+    }
+  }
+
+  @media (max-device-width: 476px) {
+    & {
+      margin-top: 28px;
+      width: 250px;
+    }
+  }
+
+  @media (max-device-width: 441px) {
+    & {
+      justify-content: flex-start;
+      width: 225px;
+    }
+    & > li {
+      margin-right: 16px;
+    }
+  }
+
+  @media (max-device-width: 399px) {
+    & {
+      margin-top: 20px;
+      width: 200px;
+    }
+    
+    & > li {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-device-width: 311px) {
+    & {
+      width: 150px;
+    }
+  }
+}
+
+.header {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.follow-btn, .message-btn {
+  text-transform: capitalize;
+  font-weight: 500;
+  border-radius: 8px;
+}
+
+.follow-btn {
+  background-color: #0095f6;
+  letter-spacing: 0.25px;
+  padding: 4px 18px 3px 18px;
+  &:hover {
+    background-color: #1877f2;
+  }
+  @media (max-device-width: 899px) {
+    & {
+      width: 100%;
+    }
+  }
+}
+
+.message-btn {
+  background-color: #efefef;
+  letter-spacing: normal;
+  padding: 4px 16px 3px 16px;
+  color: black;
+  &:hover {
+    background-color: #dbdbdb;
+  }
+  @media (max-device-width: 899px) {
+    & {
+      width: 100%;
+    }
+  }
+}
+
+.icon-button {
+  background-color: #efefef;
+  min-width: 32px;
+  padding: 8px 9px;
+  border-radius: 8px;
+  & :global(.MuiButton-startIcon) {
+    margin: 0;
+  }
+  &:hover {
+    background-color: #dbdbdb;
+  }
+}
+
+.button-header {
+  display: flex;
+  gap: 0px 8px;
+  margin-left: 28px;
+  margin-top: 4px;
+
+  @media (max-device-width: 899px) {
+    & {
+      margin: 16px;
+    }
+  }
+}
+
+.menu-icon {
+  font-size: 28px;
+  margin-top: 1px;
+  margin-left: 6px;
+}
+
+.username {
+  margin-top: 6px;
+  font-size: 20px;
+  color: #262626;
+
+  @media (max-device-width: 899px) {
+    & {
+      margin-top: 56px;
+      font-size: 28px;
+      margin-left: 18px;
+    }
+  }
+
+  @media (max-device-width: 599px) {
+    & {
+      font-size: 24px;
+    }
+  }
+  @media (max-device-width: 476px) {
+    & {
+      font-size: 20px;
+    }
+  }
+}
+
+.name-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #262626;
+
+  @media (max-device-width: 899px) {
+    & {
+      margin: 0 16px;
+    }
+  }
+}
+
+.description-text {
+  font-size: 14px;
+  color: #737373;
+
+  @media (max-device-width: 899px) {
+    & {
+      margin: 0 16px;
+    }
+  }
+}
+
+.bold {
+  font-weight: 500;
+  @media (max-device-width: 899px) {
+    & {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+.add-icon {
+  margin: 0;
+}

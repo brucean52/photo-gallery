@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px;
+  margin-bottom: 1px;
+}
+
+.text-field {
+  & :global(.MuiOutlinedInput-root) {
+    border-radius: 0px;
+    font-size: 14px;
+    & :global(.MuiOutlinedInput-notchedOutline) {
+      border: none;
+    }
+    & > input {
+      -webkit-text-fill-color: #000;
+    }
+  }
+  @media (max-device-width: 1450px) {
+    & {  
+      padding-bottom: 8px;
+    }
+  }
+
+  @media (max-device-width: 1250px) {
+    & {  
+      padding-bottom: 12px;
+    }
+  }
+
+  @media (max-device-width: 1150px) {
+    & {  
+      padding-bottom: 14px;
+    }
+  }
+}
+
+.btn-container {
+  margin: 14px 8px 14px 16px;
+}
+
+.button {
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 14px;
+  font-weight: 550;
+  box-sizing: border-box;
+  color: #0094f6;
+  opacity: 0.3;
+}

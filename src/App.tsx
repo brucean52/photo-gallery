@@ -1,46 +1,37 @@
 import React from 'react';
-import {Switch, Route, useLocation} from 'react-router-dom';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import AppLayout from './components/common/app-layout/AppLayout';
+import GalleryPage from './pages/gallery-page/GalleryPage';
+import GalleryPost from './pages/gallery-post/GalleryPost';
+import InstagramPage from './pages/instagram-page/InstagramPage';
+import InstagramPost from './pages/instagram-post/InstagramPost';
 
-import AppHeader from './components/common/AppHeader';
-import GalleryPage from './pages/GalleryPage';
-import InstagramPage from './pages/InstagramPage';
-import GalleryPost from './pages/GalleryPost';
-import InstagramPost from './pages/InstagramPost';
-import MobileBottomNav from './components/common/MobileBottomNav';
-
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-
-function App() {
+const App: React.FC = () => {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const location = useLocation();
-  const mobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const modalBackground = !mobile && location.state && location.state['modalBackground'];
- 
-  return (
-    <div>
-      <AppHeader/>
-      <Switch location={modalBackground || location}>
-        <Route path="/" exact>
-          <GalleryPage/>
-        </Route>
-        <Route path="/gallery/:id">
-          <GalleryPost/>
-        </Route>
-        <Route path="/instagram" exact>
-          <InstagramPage/>
-        </Route>
-        <Route path="/instagram/:id">
-          <InstagramPost/>
-        </Route>
-      </Switch>
-      {modalBackground && <Route path="/instagram/:id" children={<InstagramPost/>} />}
-      {modalBackground && <Route path="/gallery/:id" children={<GalleryPost/>} />}
+  const modalBackground = !isMobile && location.state && location.state['modalBackground'];
 
-      {mobile && <MobileBottomNav/>}
-    </div>  
+  return (
+    <>
+      <Routes location={modalBackground || location}>
+        <Route path="/" element={<AppLayout />}>
+          <Route index element={<GalleryPage />} />
+          <Route path="/gallery/:id" element={<GalleryPost />} />
+          <Route path="/instagram" element={<InstagramPage />} />
+          <Route path="/instagram/:id" element={<InstagramPost />} />
+        </Route>
+      </Routes>
+      {modalBackground && (
+        <Routes>
+          <Route path="/instagram/:id" element={<InstagramPost/>} />
+          <Route path="/gallery/:id" element={<GalleryPost/>} />
+        </Routes>
+      )}
+    </>
   );
-}
+};
 
 export default App;

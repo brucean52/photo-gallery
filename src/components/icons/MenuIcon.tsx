@@ -1,32 +1,14 @@
 export default function MenuIcon() {
   return (
     <svg
-      width="16"
-      height="16"
-      fill="#262626"
-      viewBox="0 0 48 48"
+      width="24"
+      height="24"
+      color="#000"
+      viewBox="0 0 24 24"
     >
-      <circle
-        cx="8"
-        cy="24"
-        r="4.5"
-        fillRule="evenodd"
-        clipRule="evenodd"
-      ></circle>
-      <circle
-        cx="24"
-        cy="24"
-        r="4.5"
-        fillRule="evenodd"
-        clipRule="evenodd"
-      ></circle>
-      <circle
-        cx="40"
-        cy="24"
-        r="4.5"
-        fillRule="evenodd"
-        clipRule="evenodd"
-      ></circle>
+      <circle cx="12" cy="12" r="1.5"></circle>
+      <circle cx="6" cy="12" r="1.5"></circle>
+      <circle cx="18" cy="12" r="1.5"></circle>
     </svg>
   );
 }

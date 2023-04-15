@@ -1,0 +1,17 @@
+.root {
+  margin-top: 16px;
+  overflow-y: auto;
+}
+
+.label-container {
+  padding: 8px 16px;
+
+  &:hover {
+    background-color: #e6f3ff;
+  }
+}
+
+.text-container {
+  display: flex;
+  justify-content: space-between;
+}

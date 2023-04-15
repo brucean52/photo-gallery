@@ -1,0 +1,17 @@
+.root {
+  position: sticky;
+  padding-bottom: 4px;
+  padding-top: 4px;
+  bottom: 0;
+  background-color: #262626;
+  z-index: 1600;
+}
+
+.action {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  color: #fafafa;
+  &:global(.Mui-selected) {
+    color: #1a8cff;
+  }
+}

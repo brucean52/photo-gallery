@@ -1,0 +1,151 @@
+.root {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  z-index: 1200;
+}
+
+.modal {
+  visibility: visible;
+  margin: auto 0;
+  position: relative;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.close {
+  position: absolute;
+  color: #ffffff;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.next-btn-container {
+  display: flex;
+  padding-right: 16px;
+}
+
+.prev-btn-container {
+  display: flex;
+  padding-left: 16px;
+}
+
+.modal-next-btn, .modal-prev-btn {
+  color: #fafafa;
+  font-size: 32px;
+  cursor: pointer; 
+  margin: auto;
+}
+
+.modal-next-btn:hover, .modal-prev-btn:hover {
+  color: #cecece;
+}
+
+.image {
+  position: absolute;
+  user-select: none;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+
+  @media (max-device-width: 899px) {
+    & {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+
+.canvas {
+  z-index: 1500;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+
+  @media (max-device-width: 899px) {
+    & {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+
+.img-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+
+  @media (max-device-width: 899px) {
+    & {
+      justify-content: center;
+      padding-bottom: 24px;
+      flex-wrap: wrap;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+
+.tab-container {
+  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+}
+
+.tab-disabled {
+  &:global(.Mui-disabled) {
+    opacity: 0.5,
+  }
+}
+
+.content-container {
+  width: 270px;
+  @media (max-device-width: 899px) {
+    & {  
+      width: 100%;
+    }
+  }
+}
+
+.mobile-container {
+  margin-top: 55px;
+}
+
+.mobile-header {
+  display: flex;
+  justify-content: center;
+}
+
+.spacer {
+  width: 615px;
+}
+
+.back-icon {
+  margin: 3px 0px 6px 16px;
+}
+
+.mobile-text {
+  font-size: 20px;
+  font-weight: 550;
+  margin-left: 24px;
+
+  @media (max-device-width: 599px) {
+    & {  
+      margin-left: 24px;
+    }
+  }
+}
