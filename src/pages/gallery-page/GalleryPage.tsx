@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback, useContext } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import Gallery from 'react-photo-gallery';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import PhotoAlbum from "react-photo-album";
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { AppContext } from '../../AppContext';
@@ -12,6 +12,7 @@ const GalleryPage: React.FC = () => {
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
   const isMedium = useMediaQuery(theme.breakpoints.down('md'));
+  const navigate = useNavigate();
   const location = useLocation();
   const { appOptions, setSortedPhotos } = useContext(AppContext);
 
@@ -39,30 +40,24 @@ const GalleryPage: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const renderImage = useCallback(
-    ({ photo }) => (
-      <div key={photo.id} style={{ margin: '2px', height: photo.height, width: photo.width }}>
-        <Link
-          to={`/gallery/${photo.id}`}
-          state={!isMedium && { modalBackground: location }}
-        >
-          <img
-            className={styles.image}
-            src={photo.src}
-            alt={photo.alt}
-            width={photo.width}
-            height={photo.height}
-            loading="lazy"
-          />
-        </Link>
-      </div>
-    ), 
-    [location, isMedium],
-  );
+  const photoClicked = (photo: Photo) => {
+    if (!isMedium) {
+      navigate(`/gallery/${photo.id}`, { state: { modalBackground: location }});
+    } else {
+      navigate(`/gallery/${photo.id}`);
+    }
+  }
 
   return (
     <div className={styles.container}>
-      <Gallery photos={appOptions.sortedPhotos} renderImage={renderImage} targetRowHeight={isSmall ? 180 : isMedium ? 250 : 350}/>
+      <PhotoAlbum
+        photos={appOptions.sortedPhotos}
+        layout="masonry"
+        onClick={({ index, photo }) => {photoClicked(photo)}}
+        targetRowHeight={isSmall ? 180 : isMedium ? 250 : 350}
+        spacing={4}
+        columns={3}
+      />
     </div>
   );
 };

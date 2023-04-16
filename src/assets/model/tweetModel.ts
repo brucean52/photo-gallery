@@ -1,3 +1,6 @@
+import tweetImg from '../images/tweet.webp';
+import tweetSquareImg from '../images/tweet-square.webp';
+
 const visionApi = {
   "cropHintsAnnotation": {
     "cropHints": [
@@ -613,8 +616,8 @@ const visionApi = {
 
 const photo = {
   id: 'XqiXIPBw',
-  src: require('../images/tweet.webp'),
-  squareSrc: require('../images/tweet-square.webp'),
+  src: tweetImg,
+  squareSrc: tweetSquareImg,
   alt: 'Twitter',
   vision: JSON.stringify(visionApi),
   width: 2436,

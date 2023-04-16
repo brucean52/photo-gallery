@@ -1,3 +1,6 @@
+import kojaImg from '../images/koja.webp';
+import kojaSquareImg from '../images/koja-square.webp';
+
 const visionApi = {
   "cropHintsAnnotation": {
     "cropHints": [
@@ -2055,8 +2058,8 @@ const visionApi = {
 
 const photo = {
   id: 'FsVKzLGp',
-  src: require('../images/koja.webp'),
-  squareSrc: require('../images/koja-square.webp'),
+  src: kojaImg,
+  squareSrc: kojaSquareImg,
   alt: 'Koja Kitchen',
   vision: JSON.stringify(visionApi),
   width: 3260,

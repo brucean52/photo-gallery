@@ -1,3 +1,6 @@
+import hHouseImg from '../images/holiday-house.webp';
+import hHouseSquareImg from '../images/holiday-house-square.webp';
+
 const visionApi = {
   "cropHintsAnnotation": {
     "cropHints": [
@@ -1520,8 +1523,8 @@ const visionApi = {
 
 const photo = {
   id: 'CkbrQVuC',
-  src: require('../images/holiday-house.webp'),
-  squareSrc: require('../images/holiday-house-square.webp'),
+  src: hHouseImg,
+  squareSrc: hHouseSquareImg,
   alt: 'holiday house',
   vision: JSON.stringify(visionApi),
   width: 4032,

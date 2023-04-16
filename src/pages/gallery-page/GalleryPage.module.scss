@@ -16,8 +16,7 @@
     }
   }
 }
-
-.image {
+:global(.react-photo-album--photo) {
   cursor: pointer;
   &:hover {
     opacity: 0.8;

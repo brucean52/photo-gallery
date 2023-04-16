@@ -4,6 +4,7 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import carouselImg from '../../../assets/icons/instagram-carousel.png';
 import { AppContext } from '../../../AppContext';
 import styles from './GridLayout.module.scss';
 
@@ -22,7 +23,7 @@ const GridLayout: React.FC = () => {
             {post.photos.length > 1 && (
               <img
                 className={styles["multiple-icon"]}
-                src={require(`../../../assets/icons/instagram-carousel.png`)}
+                src={carouselImg}
                 alt="multiple-icon"
                 loading="lazy"
               />

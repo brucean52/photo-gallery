@@ -1,3 +1,7 @@
+import stageImg from '../images/stage.webp';
+import stageSquareImg from '../images/stage-square.webp';
+
+
 const visionApi = {
   "cropHintsAnnotation": {
     "cropHints": [
@@ -2138,8 +2142,8 @@ const visionApi = {
 
 const photo = {
   id: 'ZUXklnjA',
-  src: require('../images/stage.webp'),
-  squareSrc: require('../images/stage-square.webp'),
+  src: stageImg,
+  squareSrc: stageSquareImg,
   alt: 'stage',
   vision: JSON.stringify(visionApi),
   width: 4032,

@@ -1,3 +1,6 @@
+import sunsetImg from '../images/sunset.webp';
+import sunsetSquareImg from '../images/sunset-square.webp';
+
 const visionApi = {
   "cropHintsAnnotation": {
     "cropHints": [
@@ -514,8 +517,8 @@ const visionApi = {
 
 const photo = {
   id: 'ZPfoQbGe',
-  src: require('../images/sunset.webp'),
-  squareSrc: require('../images/sunset-square.webp'),
+  src: sunsetImg,
+  squareSrc: sunsetSquareImg,
   alt: 'sunset',
   vision: JSON.stringify(visionApi),
   width: 4032,

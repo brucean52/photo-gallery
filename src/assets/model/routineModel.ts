@@ -1,3 +1,6 @@
+import routineImg from '../images/routine.webp';
+import routineSquareImg from '../images/routine-square.webp';
+
 const visionApi = {
   "cropHintsAnnotation": {
     "cropHints": [
@@ -2722,8 +2725,8 @@ const visionApi = {
 
 const photo = {
   id: 'RfCqeGIm',
-  src: require('../images/routine.webp'),
-  squareSrc: require('../images/routine-square.webp'),
+  src: routineImg,
+  squareSrc: routineSquareImg,
   alt: 'Philz Coffee',
   vision: JSON.stringify(visionApi),
   width: 3540,

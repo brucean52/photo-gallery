@@ -18,15 +18,15 @@ In the project directory, you can run:
 ### `npm install`
 Installs the necessary modules to run the application.
 
-### `npm start`
+### `npm run dev`
 Runs the app in development mode.
 Open [http://localhost:3000/](http://localhost:3000/) to view it in your browser.
 
 ### TBD `npm test`
 Runs the applications tests. Test code was wrtten using React Testing Library.
-s
+
 ## References
 
-- [react-photo-gallery](https://github.com/neptunian/react-photo-gallery)
+- [react-photo-album](https://github.com/igordanchenko/react-photo-album)
 - [Google Cloud Vision API](https://cloud.google.com/vision)
 - [Instagram](https://www.instagram.com/)

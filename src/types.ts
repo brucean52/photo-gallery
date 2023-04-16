@@ -1,6 +1,6 @@
 export type AppContextType = {
   appOptions: AppOptionsType;
-  setSortedPhotos: (photos) => void;
+  setSortedPhotos: (photos: Photo[]) => void;
 }
 
 export type AppOptionsType = {

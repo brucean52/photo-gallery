@@ -1,3 +1,6 @@
+import viewImg from '../images/view.webp';
+import viewSquareImg from '../images/view-square.webp';
+
 const visionApi = {
   "cropHintsAnnotation": {
     "cropHints": [
@@ -898,8 +901,8 @@ const visionApi = {
 
 const photo = {
   id: 'BYaUmvPP',
-  src: require('../images/view.webp'),
-  squareSrc: require('../images/view-square.webp'),
+  src: viewImg,
+  squareSrc: viewSquareImg,
   alt: 'view',
   vision: JSON.stringify(visionApi),
   width: 3916,

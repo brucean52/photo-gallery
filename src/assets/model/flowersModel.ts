@@ -1,3 +1,8 @@
+import flwrsOneImg from '../images/flowers1.webp';
+import flwrsOneSquareImg from '../images/flowers1-square.webp';
+import flwrsTwoImg from '../images/flowers2.webp';
+import flwrsThreeImg from '../images/flowers3.webp';
+
 const visionApiFlwrsOne = {
   "cropHintsAnnotation": {
     "cropHints": [
@@ -1609,8 +1614,8 @@ const visionApiFlwrsThree = {
 
 const flowersOnePhoto = {
   id: 'VcuKaNff',
-  src: require('../images/flowers1.webp'),
-  squareSrc: require('../images/flowers1-square.webp'),
+  src: flwrsOneImg,
+  squareSrc: flwrsOneSquareImg,
   alt: 'flowers1',
   vision: JSON.stringify(visionApiFlwrsOne),
   width: 3024,
@@ -1619,7 +1624,7 @@ const flowersOnePhoto = {
 
 const flowersTwoPhoto = {
   id: 'jBugBCht',
-  src: require('../images/flowers2.webp'),
+  src: flwrsTwoImg,
   alt: 'flowers2',
   vision: JSON.stringify(visionApiFlwrsTwo),
   width: 3024,
@@ -1628,7 +1633,7 @@ const flowersTwoPhoto = {
 
 const flowersThreePhoto = {
   id: 'kKHLSSzQ',
-  src: require('../images/flowers3.webp'),
+  src: flwrsThreeImg,
   alt: 'flowers3',
   vision: JSON.stringify(visionApiFlwrsThree),
   width: 3024,

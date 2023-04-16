@@ -1,3 +1,6 @@
+import starbucksImg from '../images/starbucks.webp';
+import starbucksSquareImg from '../images/starbucks-square.webp';
+
 const visionApi = {
   "cropHintsAnnotation": {
     "cropHints": [
@@ -1248,8 +1251,8 @@ const visionApi = {
 
 const photo = {
   id: 'HHtHgQEH',
-  src: require('../images/starbucks.webp'),
-  squareSrc: require('../images/starbucks-square.webp'),
+  src: starbucksImg,
+  squareSrc: starbucksSquareImg,
   alt: 'Starbucks Coffee',
   vision: JSON.stringify(visionApi),
   width: 2988,

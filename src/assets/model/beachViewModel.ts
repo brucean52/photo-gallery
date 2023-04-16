@@ -1,3 +1,6 @@
+import beachViewImg from '../images/beach-view.webp';
+import beachViewSquareImg from '../images/beach-view-square.webp';
+
 const visionApi = {
   "cropHintsAnnotation": {
     "cropHints": [
@@ -490,8 +493,8 @@ const visionApi = {
 
 const photo = {
   id: 'ImepVoGx',
-  src: require('../images/beach-view.webp'),
-  squareSrc: require('../images/beach-view-square.webp'),
+  src: beachViewImg,
+  squareSrc: beachViewSquareImg,
   alt: 'beach view',
   vision: JSON.stringify(visionApi),
   width: 4032,

@@ -1,3 +1,6 @@
+import gucciImg from '../images/gucci.webp';
+import gucciSquareImg from '../images/gucci-square.webp';
+
 const visionApi = {
   "cropHintsAnnotation": {
     "cropHints": [
@@ -11094,8 +11097,8 @@ const visionApi = {
 
 const photo = {
   id: 'gMILXdBY',
-  src: require('../images/gucci.webp'),
-  squareSrc: require('../images/gucci-square.webp'),
+  src: gucciImg,
+  squareSrc: gucciSquareImg,
   alt: 'gucci',
   vision: JSON.stringify(visionApi),
   width: 4032,

@@ -1,3 +1,6 @@
+import centralParkImg from '../images/central-park.webp';
+import centralParkSquareImg from '../images/central-park-square.webp';
+
 const visionApi = {
   "cropHintsAnnotation": {
     "cropHints": [
@@ -1729,8 +1732,8 @@ const visionApi = {
 
 const photo = {
   id: 'wwDHEgKM',
-  src: require('../images/central-park.webp'),
-  squareSrc: require('../images/central-park-square.webp'),
+  src: centralParkImg,
+  squareSrc: centralParkSquareImg,
   alt: 'central park',
   vision: JSON.stringify(visionApi),
   width: 4032,

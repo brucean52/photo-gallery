@@ -1,3 +1,6 @@
+import dilemmaImg from '../images/dilemma.webp';
+import dilemmaSquareImg from '../images/dilemma-square.webp';
+
 const visionApi = {
   "cropHintsAnnotation": {
     "cropHints": [
@@ -448,8 +451,8 @@ const visionApi = {
 
 const photo = {
   id: 'yKQovMNc',
-  src: require('../images/dilemma.webp'),
-  squareSrc: require('../images/dilemma-square.webp'),
+  src: dilemmaImg,
+  squareSrc: dilemmaSquareImg,
   alt: 'dilemma',
   vision: JSON.stringify(visionApi),
   width: 1000,

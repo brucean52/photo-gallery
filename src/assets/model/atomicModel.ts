@@ -1,3 +1,7 @@
+import atomicImg from '../images/atomic.webp';
+import atomicSquareImg from '../images/atomic-square.webp';
+import verticalImg from '../images/vertical.webp';
+
 const visionApiAtomic = {
   "cropHintsAnnotation": {
     "cropHints": [
@@ -2172,8 +2176,8 @@ const visionApiVertical = {
 
 const photoAtomic = {
   id: 'JTxkexhW',
-  src: require('../images/atomic.webp'),
-  squareSrc: require('../images/atomic-square.webp'),
+  src: atomicImg,
+  squareSrc: atomicSquareImg,
   alt: 'atomic',
   vision: JSON.stringify(visionApiAtomic),
   width: 4032,
@@ -2182,7 +2186,7 @@ const photoAtomic = {
 
 const photoVertical = {
   id: 'gBBTAppO',
-  src: require('../images/vertical.webp'),
+  src: verticalImg,
   alt: 'vertical',
   vision: JSON.stringify(visionApiVertical),
   width: 3332,

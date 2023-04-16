@@ -1,3 +1,6 @@
+import iceCreamImg from '../images/ice-cream.webp';
+import iceCreamSquareImg from '../images/ice-cream-square.webp';
+
 const visionApi = {
   "cropHintsAnnotation": {
     "cropHints": [
@@ -1689,8 +1692,8 @@ const visionApi = {
 
 const photo = {
   id: 'PDUbfdxY',
-  src: require('../images/ice-cream.webp'),
-  squareSrc: require('../images/ice-cream-square.webp'),
+  src: iceCreamImg,
+  squareSrc: iceCreamSquareImg,
   alt: 'Cold Stone Creamery',
   vision: JSON.stringify(visionApi),
   width: 3704,

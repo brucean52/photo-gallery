@@ -1,3 +1,6 @@
+import laptopImg from '../images/laptop.webp';
+import laptopSquareImg from '../images/laptop-square.webp';
+
 const visionApi = {
   "cropHintsAnnotation": {
     "cropHints": [
@@ -917,8 +920,8 @@ const visionApi = {
 
 const photo = {
   id: 'CCdXZUOv',
-  src: require('../images/laptop.webp'),
-  squareSrc: require('../images/laptop-square.webp'),
+  src: laptopImg,
+  squareSrc: laptopSquareImg,
   alt: 'Macbook Pro',
   vision: JSON.stringify(visionApi),
   width: 3596,

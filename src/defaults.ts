@@ -1,3 +1,4 @@
+import profileImg from './assets/images/profile.webp';
 import { samplePosts } from './assets/model/_index';
 import { Post, Photo, AppOptionsType, UserProfile } from './types';
 
@@ -9,7 +10,7 @@ const defaultUserProfile: UserProfile = {
   followers: 1000,
   following: 123,
   bio: 'Engineer',
-  imgSrc: require('./assets/images/profile.webp')
+  imgSrc: profileImg
 }
 
 export const defaultAppOptions: AppOptionsType = {

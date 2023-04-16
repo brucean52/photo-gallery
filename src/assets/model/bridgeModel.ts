@@ -1,3 +1,6 @@
+import bridgeImg from '../images/bridge.webp';
+import bridgeSquareImg from '../images/bridge-square.webp';
+
 const visionApi = {
   "cropHintsAnnotation": {
     "cropHints": [
@@ -2885,8 +2888,8 @@ const visionApi = {
 
 const photo = {
   id: 'HwApZVLt',
-  src: require('../images/bridge.webp'),
-  squareSrc: require('../images/bridge-square.webp'),
+  src: bridgeImg,
+  squareSrc: bridgeSquareImg,
   alt: 'Bridge',
   vision: JSON.stringify(visionApi),
   width: 4032,

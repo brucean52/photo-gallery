@@ -1,3 +1,6 @@
+import shoesImg from '../images/shoes.webp';
+import shoesSquareImg from '../images/shoes-square.webp';
+
 const visionApi = {
   "cropHintsAnnotation": {
     "cropHints": [
@@ -627,8 +630,8 @@ const visionApi = {
 
 const photo = {
   id: 'jLtyNDqC',
-  src: require('../images/shoes.webp'),
-  squareSrc: require('../images/shoes-square.webp'),
+  src: shoesImg,
+  squareSrc: shoesSquareImg,
   alt: 'shoes',
   vision: JSON.stringify(visionApi),
   width: 4032,

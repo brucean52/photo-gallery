@@ -1,3 +1,6 @@
+import pixelImg from '../images/pixel.webp';
+import pixelSquareImg from '../images/pixel-square.webp';
+
 const visionApi = {
   "cropHintsAnnotation": {
     "cropHints": [
@@ -867,8 +870,8 @@ const visionApi = {
 
 const photo = {
   id: 'bbb023',
-  src: require('../images/pixel.webp'),
-  squareSrc: require('../images/pixel-square.webp'),
+  src: pixelImg,
+  squareSrc: pixelSquareImg,
   alt: 'Google vs Apple',
   vision: JSON.stringify(visionApi),
   width: 3704,

@@ -1,3 +1,6 @@
+import wynnImg from '../images/wynn.webp';
+import wynnSquareImg from '../images/wynn-square.webp';
+
 const visionApi = {
   "cropHintsAnnotation": {
     "cropHints": [
@@ -1316,8 +1319,8 @@ const visionApi = {
 
 const photo = {
   id: 'NyBCUozB',
-  src: require('../images/wynn.webp'),
-  squareSrc: require('../images/wynn-square.webp'),
+  src: wynnImg,
+  squareSrc: wynnSquareImg,
   alt: 'Wynn',
   vision: JSON.stringify(visionApi),
   width: 2829,
