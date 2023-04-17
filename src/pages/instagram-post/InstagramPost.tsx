@@ -2,7 +2,7 @@ import React, {useState, useRef, useEffect, useContext} from 'react';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useNavigate, useParams } from 'react-router-dom';
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
+import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleChevronRight, faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import CloseIcon from '../../components/icons/CloseIcon';
@@ -28,7 +28,9 @@ const InstagramPost: React.FC = () => {
       let postIndex  = appOptions.defaultPosts.findIndex(post => post.id === id);
       setCurrentPost(appOptions.defaultPosts[postIndex]);
       setPostIndex(postIndex);
-      disableBodyScroll(modalRef.current);
+      if (modalRef.current !== null) {
+        disableBodyScroll(modalRef.current);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -40,15 +42,15 @@ const InstagramPost: React.FC = () => {
   }, [isMobile]);
   
 
-  const close = (e) => {
+  const close = (e: React.SyntheticEvent<Element, Event>) => {
     e.stopPropagation();
-    enableBodyScroll(modalRef.current);
+    clearAllBodyScrollLocks();
     setPostIndex(0);
     setCurrentPost(defaultPost)
     navigate('/instagram');
   };
 
-  const nextPost = (e) => {
+  const nextPost = (e: React.SyntheticEvent<Element, Event>) => {
     e.stopPropagation();
     let index = postIndex + 1;
     setCurrentPost(appOptions.defaultPosts[index]);
@@ -56,7 +58,7 @@ const InstagramPost: React.FC = () => {
     navigate(`/instagram/${appOptions.defaultPosts[index].id}`, {state: { modalBackground: '/instagram' }})
   }
 
-  const prevPost = (e) => {
+  const prevPost = (e: React.SyntheticEvent<Element, Event>) => {
     e.stopPropagation();
     let index = postIndex - 1;
     setCurrentPost(appOptions.defaultPosts[index]);

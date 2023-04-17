@@ -9,18 +9,22 @@ import styles from './MobileBottomNav.module.scss';
 const MobileBottomNav: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [value, setValue] = useState(location.pathname.includes('instagram') ? '/instagram' : '/');
+  const [value, setValue] = useState<number>(0);
 
-  const handleChange = (event, value) => {
+  const handleChange = (event: React.SyntheticEvent<Element, Event>, value: number) => {
     setValue(value);
-    navigate(value);
+    if (value === 0) {
+      navigate('/');
+    } else {
+      navigate('/instagram');
+    }
   }
 
   useEffect(() => {
     if (location.pathname.includes('instagram')) {
-      setValue('/instagram')
+      setValue(1);
     } else {
-      setValue('/')
+      setValue(0);
     }
   }, [location.pathname]);
 
@@ -31,8 +35,8 @@ const MobileBottomNav: React.FC = () => {
       showLabels
       className={styles.root}
     >
-      <BottomNavigationAction className={styles.action} label="Gallery" icon={<DashboardIcon />} value="/" />
-      <BottomNavigationAction className={styles.action} label="Instagram" icon={<InstagramIcon />} value="/instagram"/>
+      <BottomNavigationAction className={styles.action} label="Gallery" icon={<DashboardIcon />} value={0} />
+      <BottomNavigationAction className={styles.action} label="Instagram" icon={<InstagramIcon />} value={1}/>
     </BottomNavigation>
   );
 };

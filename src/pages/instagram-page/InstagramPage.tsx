@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
+import { clearAllBodyScrollLocks } from 'body-scroll-lock';
 import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -17,7 +18,11 @@ const InstagramPage: React.FC = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [value, setValue] = useState(0);
 
-  const tabChange = (event, newValue) => {
+  useEffect(() => {
+    clearAllBodyScrollLocks();
+  }, []);
+
+  const tabChange = (event: React.SyntheticEvent<Element, Event>, newValue: number) => {
     setValue(newValue);
   };
   

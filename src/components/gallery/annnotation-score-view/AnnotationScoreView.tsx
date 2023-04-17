@@ -5,7 +5,7 @@ import styles from './AnnotationScoreView.module.scss';
 type AnnotationScoreViewProps = {
   annotations: any[];
   height: number;
-  setHoveredObjIndex: Dispatch<SetStateAction<number>>
+  setHoveredObjIndex: Dispatch<SetStateAction<number | null>>
 }
 
 const AnnotationScoreView: React.FC<AnnotationScoreViewProps> = (props) => {

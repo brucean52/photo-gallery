@@ -34,7 +34,7 @@ const GalleryPost: React.FC = () => {
   const [height, setHeight] = useState<number>(0);
   const [labels, setLabels] = useState<any[]>([]);
   const [objects, setObjects] = useState<any[]>([]);
-  const [hoveredObjIndex, setHoveredObjIndex] = useState<number>(null);
+  const [hoveredObjIndex, setHoveredObjIndex] = useState<number | null>(null);
   const prevHoveredObjIndex = usePreviousValue(hoveredObjIndex);
   const { winHeight, winWidth } = useWindowDimensions();
 
@@ -46,10 +46,12 @@ const GalleryPost: React.FC = () => {
     calculateImageSize(photo);
     setCurrentPhoto(photo);
     setPhotoIndex(index);
-    disableBodyScroll(modalRef.current);
+    if (modalRef.current !== null) {
+      disableBodyScroll(modalRef.current);
+    }
   }
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (event: React.SyntheticEvent<Element, Event>, newValue: number) => {
     if (newValue === 1) {
       drawCanvasBoxes();
     } else {
@@ -58,7 +60,7 @@ const GalleryPost: React.FC = () => {
     setTabValue(newValue);
   };
 
-  const parseVisionAPI = (photo) => {
+  const parseVisionAPI = (photo: Photo) => {
     let visionAPI = JSON.parse(photo.vision);
     let objects: any[] = [];
     let labels = visionAPI['labelAnnotations'];
@@ -71,7 +73,7 @@ const GalleryPost: React.FC = () => {
     setObjects(objects)
   }
 
-  const calculateImageSize = useCallback((photo) => {
+  const calculateImageSize = useCallback((photo: Photo) => {
     let calcWidth: number = winWidth < 900 ? winWidth : (winWidth > 900 && winWidth < 1400) ? winWidth - 500 : winWidth - 400;
     let calcHeight: number = 0;
     let aspectRatio = photo.width / photo.height;
@@ -86,13 +88,15 @@ const GalleryPost: React.FC = () => {
     setHeight(calcHeight);
   }, [winWidth, winHeight]);
 
-  const close = (e) => {
+  const close = (e: React.SyntheticEvent<Element, Event>) => {
     e.stopPropagation();
-    enableBodyScroll(modalRef.current);
+    if (modalRef.current !== null) {
+      enableBodyScroll(modalRef.current);
+    }
     navigate(-1);
   };
 
-  const nextPost = (e) => {
+  const nextPost = (e: React.SyntheticEvent<Element, Event>) => {
     e.stopPropagation();
     let index = photoIndex + 1;
     let photo = appOptions.sortedPhotos[index];
@@ -105,7 +109,7 @@ const GalleryPost: React.FC = () => {
     setPhotoIndex(index);
   }
 
-  const prevPost = (e) => {
+  const prevPost = (e: React.SyntheticEvent<Element, Event>) => {
     e.stopPropagation();
     let index = photoIndex - 1;
     let photo = appOptions.sortedPhotos[index];
@@ -121,12 +125,12 @@ const GalleryPost: React.FC = () => {
   const drawCanvasBoxes = () => {
     if (objects.length) {
       const canvas = canvasRef.current;
-      const ctx = canvas.getContext('2d');
+      const ctx = canvas !== null && canvas.getContext('2d');
 
       objects.forEach((object) => {
         let coordsArr = object['boundingPoly']['normalizedVertices']
-        const xArr = coordsArr.map(c => c.x);
-        const yArr = coordsArr.map(c => c.y);
+        const xArr = coordsArr.map((c: any) => c.x);
+        const yArr = coordsArr.map((c: any) => c.y);
     
         let x = Math.min(...xArr) * width;
         let xMax = Math.max(...xArr) * width;
@@ -136,22 +140,24 @@ const GalleryPost: React.FC = () => {
         const boxWidth  = xMax - x;
         const boxHeight = yMax - y;
 
-        ctx.save();
-        ctx.lineWidth = 4;
-        ctx.strokeStyle = "#5dbb62";
-        ctx.strokeRect(x, y, boxWidth, boxHeight);
-        ctx.restore();
+        if (ctx) {
+          ctx.save();
+          ctx.lineWidth = 4;
+          ctx.strokeStyle = "#5dbb62";
+          ctx.strokeRect(x, y, boxWidth, boxHeight);
+          ctx.restore();
+        }
       });
     }
   }
 
-  const drawCanvasBoxHovered = useCallback((object, color) => {
+  const drawCanvasBoxHovered = useCallback((object: any, color: string) => {
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas !== null && canvas.getContext('2d');
 
     let coordsArr = object['boundingPoly']['normalizedVertices']
-    const xArr = coordsArr.map(c => c.x);
-    const yArr = coordsArr.map(c => c.y);
+    const xArr = coordsArr.map((c: any) => c.x);
+    const yArr = coordsArr.map((c: any) => c.y);
 
     let x = Math.min(...xArr) * width;
     let xMax = Math.max(...xArr) * width;
@@ -161,17 +167,21 @@ const GalleryPost: React.FC = () => {
     const boxWidth  = xMax - x;
     const boxHeight = yMax - y;
 
-    ctx.save();
-    ctx.lineWidth = 4;
-    ctx.strokeStyle = color;
-    ctx.strokeRect(x, y, boxWidth, boxHeight);
-    ctx.restore();
+    if (ctx) {
+      ctx.save();
+      ctx.lineWidth = 4;
+      ctx.strokeStyle = color;
+      ctx.strokeRect(x, y, boxWidth, boxHeight);
+      ctx.restore();
+    }
   }, [height, width]);
 
   const clearCanvas = () => {
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const ctx = canvas !== null && canvas.getContext('2d');
+    if (ctx) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
   }
 
   const renderImagePost = (
@@ -270,12 +280,12 @@ const GalleryPost: React.FC = () => {
     }
   }, [hoveredObjIndex, objects, tabValue, drawCanvasBoxHovered, prevHoveredObjIndex]);
 
-  useEffect(() => {
-    if (isMobile) {
-      clearAllBodyScrollLocks();
-    }
-    calculateImageSize(currentPhoto);
-  }, [isMobile, currentPhoto, calculateImageSize]);
+  // useEffect(() => {
+  //   if (isMobile && currentPhoto.id) {
+  //     clearAllBodyScrollLocks();
+  //     calculateImageSize(currentPhoto);
+  //   }
+  // }, [isMobile, currentPhoto, calculateImageSize]);
 
   return (
     <>

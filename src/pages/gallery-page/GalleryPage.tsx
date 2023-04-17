@@ -1,5 +1,6 @@
-import React, { useEffect, useCallback, useContext } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect, useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { clearAllBodyScrollLocks } from 'body-scroll-lock';
 import PhotoAlbum from "react-photo-album";
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -36,6 +37,7 @@ const GalleryPage: React.FC = () => {
       });
     });
 
+    clearAllBodyScrollLocks();
     setSortedPhotos(parsedPhotos);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

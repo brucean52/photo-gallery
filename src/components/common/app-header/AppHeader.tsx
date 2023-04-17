@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
@@ -13,8 +13,21 @@ import styles from './AppHeader.module.scss';
 
 const AppHeader: React.FC = () => {
   const navigate = useNavigate();
-  const { pathname } = useLocation();
-  const currentTab = pathname;
+  const location = useLocation();
+  const [value, setValue] = useState<number>(0);
+
+  useEffect(() => {
+    if (location.pathname.includes('instagram')) {
+      setValue(1);
+    } else {
+      setValue(0);
+    }
+  }, [location.pathname]);
+
+  const tabChange = (event: React.SyntheticEvent<Element, Event>, newValue: number) => {
+    window.scrollTo(0, 0);
+    setValue(newValue);
+  };
 
   return (
     <AppBar position="fixed">
@@ -26,19 +39,19 @@ const AppHeader: React.FC = () => {
         <div className={styles.flex}>
           <Tabs
             className={styles["nav-tabs"]}
-            value={currentTab}
+            value={value}
             aria-label="nav-tabs"
             variant="fullWidth"
             centered
             TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }}
-            onChange={()=> window.scrollTo(0, 0)}
+            onChange={tabChange}
           >
             <Tab
               className={styles["nav-tab"]}
               label="Gallery"
               component={Link}
               to={"/"}
-              value="/"
+              value={0}
               disableRipple
             />
             <Tab
@@ -46,7 +59,7 @@ const AppHeader: React.FC = () => {
               label="Instagram"
               component={Link}
               to={"/instagram"}
-              value="/instagram"
+              value={1}
               disableRipple
             />
           </Tabs>
