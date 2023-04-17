@@ -280,12 +280,12 @@ const GalleryPost: React.FC = () => {
     }
   }, [hoveredObjIndex, objects, tabValue, drawCanvasBoxHovered, prevHoveredObjIndex]);
 
-  // useEffect(() => {
-  //   if (isMobile && currentPhoto.id) {
-  //     clearAllBodyScrollLocks();
-  //     calculateImageSize(currentPhoto);
-  //   }
-  // }, [isMobile, currentPhoto, calculateImageSize]);
+  useEffect(() => {
+    if (isMobile && currentPhoto.id) {
+      clearAllBodyScrollLocks();
+      calculateImageSize(currentPhoto);
+    }
+  }, [isMobile, currentPhoto, calculateImageSize]);
 
   return (
     <>
