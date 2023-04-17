@@ -1,20 +1,21 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
 import CardPost from '../card-post/CardPost';
 import { shufflePosts } from '../../../util/shufflePosts';
+import { postsState } from '../../../RecoilState';
 import { Post } from '../../../types';
-import { AppContext } from '../../../AppContext';
 import styles from './FeedView.module.scss';
 
 const FeedView: React.FC = () => {
-  const { appOptions } = useContext(AppContext);
-  const [posts, setPosts] = useState<Post[]>([]);
+  const posts = useRecoilValue(postsState);
+  const [feedPosts, setFeedPosts] = useState<Post[]>([]);
   
   useEffect(()=> {
-    setPosts(shufflePosts(appOptions.defaultPosts));
+    setFeedPosts(shufflePosts(posts));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
-  const renderPost = posts.map((post) => { 
+  const renderPost = feedPosts.map((post) => { 
     return <CardPost key={post.id} post={post} isMobilePost={false}/>
   });
 

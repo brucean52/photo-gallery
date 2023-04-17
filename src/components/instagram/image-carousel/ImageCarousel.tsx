@@ -19,7 +19,6 @@ const ImageCarousel: React.FC<ImageCarouselProps> = (props) => {
       autoPlay={false}
       showThumbs={false}
       showStatus={false}
-      // For Mobile: statusFormatter={(current, total) => `${current}/${total}`}
       renderArrowPrev={(clickHandler: () => void, hasPrev: boolean) => hasPrev && (
         <button className={styles["prev-carousel"]} type="button" onClick={clickHandler}>
           <FontAwesomeIcon className={styles["chevron-icon"]} icon={faChevronCircleLeft}/>

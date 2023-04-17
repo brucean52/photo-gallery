@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useRecoilValue } from 'recoil';
 import Avatar from '@mui/material/Avatar';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -11,7 +12,7 @@ import MenuIcon from '../../icons/MenuIcon';
 import EmojiIcon from '../../icons/EmojiIcon';
 import { useWindowDimensions } from '../../../util/useWindowDimensions';
 import { Post } from '../../../types';
-import { AppContext } from '../../../AppContext';
+import { userProfileState } from '../../../RecoilState';
 import styles from './CardPost.module.scss';
 
 type CardPostProps = {
@@ -21,8 +22,7 @@ type CardPostProps = {
 
 const CardPost: React.FC<CardPostProps> = (props) => {
   const { winWidth } = useWindowDimensions();
-  const { appOptions } = useContext(AppContext);
-  const { userProfile } = appOptions;
+  const userProfile = useRecoilValue(userProfileState);
 
   let aspectRatio = props.post.photos[0].width / props.post.photos[0].height;
   let imageWidth = winWidth < 650 ? winWidth : 614;

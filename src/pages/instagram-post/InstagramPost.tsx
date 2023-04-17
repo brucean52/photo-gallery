@@ -1,4 +1,5 @@
-import React, {useState, useRef, useEffect, useContext} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useRecoilValue } from 'recoil';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -8,7 +9,7 @@ import { faCircleChevronRight, faCircleChevronLeft } from '@fortawesome/free-sol
 import CloseIcon from '../../components/icons/CloseIcon';
 import ModalPost from '../../components/instagram/modal-post/ModalPost';
 import MobilePostView from '../../components/instagram/mobile-post-view/MobilePostView';
-import { AppContext } from '../../AppContext';
+import { postsState } from '../../RecoilState';
 import { defaultPost } from '../../defaults';
 import { Post } from '../../types';
 import styles from './InstagramPost.module.scss';
@@ -19,14 +20,14 @@ const InstagramPost: React.FC = () => {
   const navigate = useNavigate();
   const { id } = useParams<{id: string}>();
   const modalRef = useRef<HTMLDivElement>(null);
-  const { appOptions } = useContext(AppContext);
+  const posts = useRecoilValue(postsState);
   const [postIndex, setPostIndex] = useState(0);
   const [currentPost, setCurrentPost] = useState<Post>(defaultPost);
 
   useEffect(() => {
-    if (appOptions.defaultPosts.length > 0) {
-      let postIndex  = appOptions.defaultPosts.findIndex(post => post.id === id);
-      setCurrentPost(appOptions.defaultPosts[postIndex]);
+    if (posts.length > 0) {
+      let postIndex  =posts.findIndex(post => post.id === id);
+      setCurrentPost(posts[postIndex]);
       setPostIndex(postIndex);
       if (modalRef.current !== null) {
         disableBodyScroll(modalRef.current);
@@ -53,17 +54,17 @@ const InstagramPost: React.FC = () => {
   const nextPost = (e: React.SyntheticEvent<Element, Event>) => {
     e.stopPropagation();
     let index = postIndex + 1;
-    setCurrentPost(appOptions.defaultPosts[index]);
+    setCurrentPost(posts[index]);
     setPostIndex(index);
-    navigate(`/instagram/${appOptions.defaultPosts[index].id}`, {state: { modalBackground: '/instagram' }})
+    navigate(`/instagram/${posts[index].id}`, {state: { modalBackground: '/instagram' }})
   }
 
   const prevPost = (e: React.SyntheticEvent<Element, Event>) => {
     e.stopPropagation();
     let index = postIndex - 1;
-    setCurrentPost(appOptions.defaultPosts[index]);
+    setCurrentPost(posts[index]);
     setPostIndex(index);
-    navigate(`/instagram/${appOptions.defaultPosts[index].id}`, {state: { modalBackground: '/instagram' }})
+    navigate(`/instagram/${posts[index].id}`, {state: { modalBackground: '/instagram' }})
   }
 
   if (isMobile) return <>{currentPost.id && <MobilePostView post={currentPost}/>}</>
@@ -91,7 +92,7 @@ const InstagramPost: React.FC = () => {
         </div>  
         <div className={styles["next-btn-container"]}>
           <FontAwesomeIcon
-            className={postIndex < appOptions.defaultPosts.length -1 ? styles["modal-next-btn"] : styles["modal-btn-hidden"]}
+            className={postIndex < posts.length -1 ? styles["modal-next-btn"] : styles["modal-btn-hidden"]}
             icon={faCircleChevronRight}
             onClick={nextPost}
           />

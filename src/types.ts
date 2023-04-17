@@ -1,15 +1,3 @@
-export type AppContextType = {
-  appOptions: AppOptionsType;
-  setSortedPhotos: (photos: Photo[]) => void;
-}
-
-export type AppOptionsType = {
-  userProfile: UserProfile,
-  defaultPosts: Post[],
-  sortedPhotos:  any[],
-  selectedPostId: string
-}
-
 export type Post = {
   id: string,
   photos: Photo[],

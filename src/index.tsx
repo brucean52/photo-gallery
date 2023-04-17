@@ -3,25 +3,22 @@ import ReactDOM from 'react-dom/client';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import { BrowserRouter } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
 import App from './App';
-import AppProvider from './AppContext';
 import theme from './theme';
 import reportWebVitals from './reportWebVitals';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './index.scss';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <BrowserRouter>
-          <AppProvider>
+          <RecoilRoot>
             <App />
-          </AppProvider>
+          </RecoilRoot> 
         </BrowserRouter>
       </ThemeProvider>
     </StyledEngineProvider>

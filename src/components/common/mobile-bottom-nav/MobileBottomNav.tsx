@@ -11,15 +11,6 @@ const MobileBottomNav: React.FC = () => {
   const location = useLocation();
   const [value, setValue] = useState<number>(0);
 
-  const handleChange = (event: React.SyntheticEvent<Element, Event>, value: number) => {
-    setValue(value);
-    if (value === 0) {
-      navigate('/');
-    } else {
-      navigate('/instagram');
-    }
-  }
-
   useEffect(() => {
     if (location.pathname.includes('instagram')) {
       setValue(1);
@@ -27,6 +18,15 @@ const MobileBottomNav: React.FC = () => {
       setValue(0);
     }
   }, [location.pathname]);
+
+  const handleChange = (event: React.SyntheticEvent<Element, Event>, value: number) => {
+    setValue(value);
+    if (value === 0) {
+      navigate('/');
+    } else {
+      navigate('/instagram');
+    }
+  };
 
   return (
     <BottomNavigation

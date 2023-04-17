@@ -1,18 +1,19 @@
-import React, { useContext} from 'react';
+import React from 'react';
+import { useRecoilValue } from 'recoil';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import PersonIcon from '../../icons/PersonIcon';
-import { AppContext } from '../../../AppContext';
+import { userProfileState, postsState } from '../../../RecoilState';
 import styles from './UserProfile.module.scss';
 
 const UserProfile: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const { appOptions } = useContext(AppContext);
-  const { userProfile } = appOptions;
+  const posts = useRecoilValue(postsState);
+  const userProfile = useRecoilValue(userProfileState);
   const followers = new Intl.NumberFormat().format(userProfile.followers);
   const following = new Intl.NumberFormat().format(userProfile.following);
 
@@ -65,7 +66,7 @@ const UserProfile: React.FC = () => {
 
           <ul className={styles["meta-container"]}>
             <li>
-              <span className={styles.bold}>{appOptions.defaultPosts.length}</span>
+              <span className={styles.bold}>{posts.length}</span>
               {isMobile ? <div>Posts</div>: <>&nbsp;posts</>}
             </li>
             <li>

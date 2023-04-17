@@ -1,10 +1,11 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { clearAllBodyScrollLocks } from 'body-scroll-lock';
 import PhotoAlbum from "react-photo-album";
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { AppContext } from '../../AppContext';
+import { sortedPhotosState, postsState } from '../../RecoilState';
 import { shufflePosts } from '../../util/shufflePosts';
 import { Photo } from '../../types';
 import styles from './GalleryPage.module.scss';
@@ -15,10 +16,12 @@ const GalleryPage: React.FC = () => {
   const isMedium = useMediaQuery(theme.breakpoints.down('md'));
   const navigate = useNavigate();
   const location = useLocation();
-  const { appOptions, setSortedPhotos } = useContext(AppContext);
+  const posts = useRecoilValue(postsState);
+  const [sortedPhotos, setSortedPhotos] = useRecoilState(sortedPhotosState);
+  
 
   useEffect(() => {
-    let newPosts = shufflePosts(appOptions.defaultPosts);
+    let newPosts = shufflePosts(posts);
     let parsedPhotos: Photo[] = [];
 
     newPosts.forEach((post) => {
@@ -53,7 +56,7 @@ const GalleryPage: React.FC = () => {
   return (
     <div className={styles.container}>
       <PhotoAlbum
-        photos={appOptions.sortedPhotos}
+        photos={sortedPhotos}
         layout="masonry"
         onClick={({ index, photo }) => {photoClicked(photo)}}
         targetRowHeight={isSmall ? 180 : isMedium ? 250 : 350}

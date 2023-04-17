@@ -1,4 +1,5 @@
-import React, { useState, useContext, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleChevronRight, faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons';
@@ -11,7 +12,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import TabPanel from '../../components/common/tab-panel/TabPanel';
 import AnnotationScoreView from '../../components/gallery/annnotation-score-view/AnnotationScoreView';
-import { AppContext } from '../../AppContext';
+import { sortedPhotosState, postsState } from '../../RecoilState';
 import { defaultPhoto } from '../../defaults';
 import { shufflePosts } from '../../util/shufflePosts';
 import { useWindowDimensions } from '../../util/useWindowDimensions';
@@ -26,7 +27,7 @@ const GalleryPost: React.FC = () => {
   const { id } = useParams<{id: string}>();
   const modalRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { appOptions, setSortedPhotos } = useContext(AppContext);
+
   const [tabValue, setTabValue] = useState<number>(0);
   const [currentPhoto, setCurrentPhoto] = useState<Photo>(defaultPhoto);
   const [photoIndex, setPhotoIndex] = useState<number>(0);
@@ -35,8 +36,11 @@ const GalleryPost: React.FC = () => {
   const [labels, setLabels] = useState<any[]>([]);
   const [objects, setObjects] = useState<any[]>([]);
   const [hoveredObjIndex, setHoveredObjIndex] = useState<number | null>(null);
+  
   const prevHoveredObjIndex = usePreviousValue(hoveredObjIndex);
   const { winHeight, winWidth } = useWindowDimensions();
+  const posts = useRecoilValue(postsState);
+  const [sortedPhotos, setSortedPhotos] = useRecoilState(sortedPhotosState);
 
   const showPost = (sortedPhotos: Photo[]) => {
     let index: number = sortedPhotos.findIndex( photo => photo.id === id);
@@ -99,7 +103,7 @@ const GalleryPost: React.FC = () => {
   const nextPost = (e: React.SyntheticEvent<Element, Event>) => {
     e.stopPropagation();
     let index = photoIndex + 1;
-    let photo = appOptions.sortedPhotos[index];
+    let photo = sortedPhotos[index];
 
     clearCanvas();
     setTabValue(0);
@@ -112,7 +116,7 @@ const GalleryPost: React.FC = () => {
   const prevPost = (e: React.SyntheticEvent<Element, Event>) => {
     e.stopPropagation();
     let index = photoIndex - 1;
-    let photo = appOptions.sortedPhotos[index];
+    let photo = sortedPhotos[index];
 
     clearCanvas();
     setTabValue(0);
@@ -239,10 +243,10 @@ const GalleryPost: React.FC = () => {
   )
 
   useEffect(() => {
-    if (appOptions.sortedPhotos.length > 0) {
-      showPost(appOptions.sortedPhotos);
+    if (sortedPhotos.length > 0) {
+      showPost(sortedPhotos);
     } else {
-      let newPosts = shufflePosts(appOptions.defaultPosts);
+      let newPosts = shufflePosts(posts);
       let parsedPhotos: Photo[] = [];
   
       newPosts.forEach((post) => {
@@ -319,7 +323,7 @@ const GalleryPost: React.FC = () => {
             </div>
 
             <div className={styles["next-btn-container"]}>
-              {photoIndex < appOptions.sortedPhotos.length -1 && (
+              {photoIndex < sortedPhotos.length -1 && (
                 <FontAwesomeIcon
                   className={styles["modal-next-btn"]}
                   icon={faCircleChevronRight}

@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useRecoilValue } from 'recoil';
 import Avatar from '@mui/material/Avatar';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -9,7 +10,7 @@ import ImageCarousel from '../image-carousel/ImageCarousel';
 import IconBar from '../icon-bar/IconBar';
 import CommentInput from '../comment-input/CommentInput';
 import MenuIcon from '../../icons/MenuIcon';
-import { AppContext } from '../../../AppContext';
+import { userProfileState } from '../../../RecoilState';
 import { useWindowDimensions } from '../../../util/useWindowDimensions';
 import {Post} from '../../../types';
 import styles from './ModalPost.module.scss';
@@ -19,8 +20,7 @@ type ModalPostProps = {
 }
 
 const ModalPost: React.FC<ModalPostProps> = (props) => {
-  const { appOptions } = useContext(AppContext);
-  const { userProfile } = appOptions;
+  const userProfile = useRecoilValue(userProfileState);
   const { post } = props;
   const { winHeight, winWidth } = useWindowDimensions();
   const likesText = post.likes.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
