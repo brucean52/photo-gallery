@@ -23,7 +23,7 @@
     "start": "vite",
     "dev": "vite",
     "build": "tsc && vite build",
-    "test": "vitest",
+    "test": "vitest run --coverage",
     "preview": "vite preview"
   },
   "browserslist": {
@@ -40,8 +40,8 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
     "@types/body-scroll-lock": "^2.6.2",
     "@types/dateformat": "^5.0.0",
     "@types/jest": "^27.5.2",
@@ -49,6 +49,7 @@
     "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
+    "@vitest/coverage-c8": "^0.30.1",
     "jsdom": "^21.1.1",
     "sass": "^1.62.0",
     "typescript": "^4.9.5",

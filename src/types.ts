@@ -24,5 +24,5 @@ export type UserProfile = {
   followers: number,
   following: number,
   bio: string,
-  imgSrc: any
+  imgSrc: string
 }

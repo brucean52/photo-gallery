@@ -22,7 +22,7 @@ Installs the necessary modules to run the application.
 Runs the app in development mode.
 Open [http://localhost:3000/](http://localhost:3000/) to view it in your browser.
 
-### TBD `npm test`
+### `npm test`
 Runs the applications tests. Test code was wrtten using React Testing Library.
 
 ## References
