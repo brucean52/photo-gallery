@@ -12,7 +12,6 @@ const FeedView: React.FC = () => {
   
   useEffect(()=> {
     setFeedPosts(shufflePosts(posts));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
   const renderPost = feedPosts.map((post) => { 

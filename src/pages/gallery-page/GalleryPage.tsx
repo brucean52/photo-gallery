@@ -42,7 +42,6 @@ const GalleryPage: React.FC = () => {
 
     clearAllBodyScrollLocks();
     setSortedPhotos(parsedPhotos);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const photoClicked = (photo: Photo) => {

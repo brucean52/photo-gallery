@@ -267,7 +267,6 @@ const GalleryPost: React.FC = () => {
       showPost(parsedPhotos);
       setSortedPhotos(parsedPhotos);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
